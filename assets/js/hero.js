@@ -1,6 +1,8 @@
 /* NOVASCAN hero — Apple-style frame-sequence scrubber
    160 WebP frames drawn to canvas, eased toward scroll target.
-   Fallbacks: poster + autoplay mp4 (load fail) / static poster (reduced motion). */
+   Fallbacks: poster + autoplay mp4 (load fail) / static poster (reduced motion).
+   Resilience: the rAF loop always runs (idle when hero is off-screen), so
+   bfcache restores, missed scroll events and evicted frames self-heal. */
 (function () {
   const hero = document.getElementById('hero');
   if (!hero) return;
@@ -25,7 +27,7 @@
 
   /* ---------- frame loading ---------- */
   const frames = new Array(N);
-  let loaded = 0, started = false, ext = 'webp';
+  let loaded = 0, started = false, ext = 'webp', reloading = false, stallTimer = null;
 
   function srcOf(i) { return 'assets/img/frames/f' + String(i).padStart(3, '0') + '.' + ext; }
   function onOne() {
@@ -35,6 +37,10 @@
     if (loaded >= N && !started) begin();
   }
   function loadAll() {
+    loaded = 0;
+    if (stallTimer) clearTimeout(stallTimer);
+    // safety: never let the loader block forever (slow network / dropped requests)
+    stallTimer = setTimeout(() => { if (!started && loaded > 0) begin(); }, 8000);
     for (let i = 0; i < N; i++) {
       const im = new Image();
       im.decoding = 'async';
@@ -45,9 +51,10 @@
     }
   }
   function begin() {
+    if (started) { lastIdx = -1; return; }   // re-load after eviction: just force a redraw
     started = true;
+    if (stallTimer) clearTimeout(stallTimer);
     if (loader) { loader.classList.add('done'); setTimeout(() => loader.remove(), 700); }
-    onScroll();
     requestAnimationFrame(tick);
   }
   function leanFallback() {
@@ -74,18 +81,9 @@
     if (end) end.classList.add('show');
   }
 
-  /* ---------- scrub ---------- */
-  let target = 0, cur = -1, lastIdx = -1, raf = null;
+  /* ---------- scrub (self-healing loop) ---------- */
+  let target = 0, cur = -1, lastIdx = -1;
   const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
-
-  function onScroll() {
-    const r = hero.getBoundingClientRect();
-    const total = r.height - innerHeight;
-    target = clamp(-r.top / Math.max(total, 1), 0, 1);
-    if (started && raf === null) raf = requestAnimationFrame(tick);
-  }
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
 
   function sizeCanvas() {
     const dpr = Math.min(devicePixelRatio || 1, 1.5);
@@ -99,13 +97,16 @@
   function draw(idx) {
     const dpr = sizeCanvas();
     const im = frames[idx];
-    if (!im || !im.complete || !im.naturalWidth) {
-      // nearest loaded frame
+    const ok = q => q && q.complete && q.naturalWidth > 0;
+    if (!ok(im)) {
+      // nearest usable frame
       for (let k = 1; k < N; k++) {
         const a = frames[idx - k], b = frames[idx + k];
-        if (a && a.complete && a.naturalWidth) { draw0(a, dpr); return; }
-        if (b && b.complete && b.naturalWidth) { draw0(b, dpr); return; }
+        if (ok(a)) { draw0(a, dpr); return; }
+        if (ok(b)) { draw0(b, dpr); return; }
       }
+      // nothing usable at all (evicted cache, bfcache purge) → reload the sequence
+      if (!reloading) { reloading = true; loadAll(); }
       return;
     }
     draw0(im, dpr);
@@ -134,13 +135,23 @@
     }
   }
   function tick() {
+    requestAnimationFrame(tick);                 // always continue — self-healing
+    const r = hero.getBoundingClientRect();
+    if (r.bottom < -60 || r.top > innerHeight + 60) return;   // hero off-screen → idle
+    const total = r.height - innerHeight;
+    target = clamp(-r.top / Math.max(total, 1), 0, 1);
     const prev = cur;
     cur = cur < 0 ? target : cur + (target - cur) * 0.16;
     if (Math.abs(target - cur) < 0.0004) cur = target;
     const idx = clamp(Math.round(cur * (N - 1)), 0, N - 1);
     if (idx !== lastIdx || prev < 0) { draw(idx); lastIdx = idx; }
     overlays(cur);
-    raf = (Math.abs(target - cur) > 0.00005 || cur === 0 || cur === 1) ? requestAnimationFrame(tick) : null;
-    if (raf === null && cur === target) { /* idle until next scroll */ }
   }
+  /* bfcache restore: rekick a frozen mid-load, or force a fresh draw */
+  addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    if (started) { cur = -1; lastIdx = -1; requestAnimationFrame(tick); }
+    else if (!reduced) { started = false; loadAll(); }   // load aborted when the page froze
+  });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { cur = -1; lastIdx = -1; } });
 })();

@@ -161,6 +161,10 @@ nav.main a.on::after{content:"";position:absolute;left:0;right:0;bottom:-2px;hei
 .card .go::after{content:"→";transition:.25s}
 .card:hover .go::after{transform:translateX(5px)}
 .card .tagline{font:500 10.5px/1 var(--fm);letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+.grid3 .card-wide{grid-column:1 / -1;flex-direction:row;align-items:center;gap:26px}
+.grid3 .card-wide .ico{flex:none}
+.grid3 .card-wide h3{font-size:22px}
+.grid3 .card-wide .go{margin:0 0 0 auto}
 
 /* ---------- marquee ---------- */
 .marq{overflow:hidden;border-block:1px solid var(--line);padding:20px 0;
