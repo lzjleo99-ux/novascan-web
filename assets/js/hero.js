@@ -1,6 +1,8 @@
 /* NOVASCAN hero — Apple-style frame-sequence scrubber
    160 WebP frames drawn to canvas, eased toward scroll target.
-   Fallbacks: poster + autoplay mp4 (load fail) / static poster (reduced motion).
+   The scrub ALWAYS runs — it moves only when the user scrolls, so it is not
+   the kind of autonomous animation prefers-reduced-motion should block.
+   Fallback: poster + autoplay mp4 only when frames fail to load.
    Resilience: the rAF loop always runs (idle when hero is off-screen), so
    bfcache restores, missed scroll events and evicted frames self-heal. */
 (function () {
@@ -20,9 +22,6 @@
   const barEl = document.querySelector('.hp-bar i');
 
   const N = 160, FW = 1440, FH = 810, DUR = 16;
-  // ?motion=1 forces the full scrub path (test hook / environments that force reduced motion)
-  const reduced = !new URLSearchParams(location.search).has('motion') &&
-    matchMedia('(prefers-reduced-motion: reduce)').matches;
   poster.src = 'assets/img/poster.jpg';
 
   /* ---------- frame loading ---------- */
@@ -71,15 +70,9 @@
   }
 
   const probe = new Image();
-  probe.onload = () => { if (!reduced) loadAll(); };
-  probe.onerror = () => { ext = 'jpg'; reduced ? leanFallback() : (probe.src = srcOf(0), probe.onerror = leanFallback); };
+  probe.onload = () => loadAll();
+  probe.onerror = () => { ext = 'jpg'; probe.src = srcOf(0); probe.onerror = leanFallback; };
   probe.src = srcOf(0);
-  if (reduced) {
-    hero.classList.add('lean');
-    if (loader) loader.remove();
-    if (head) head.classList.remove('hide');
-    if (end) end.classList.add('show');
-  }
 
   /* ---------- scrub (self-healing loop) ---------- */
   let target = 0, cur = -1, lastIdx = -1;
@@ -151,7 +144,7 @@
   addEventListener('pageshow', (e) => {
     if (!e.persisted) return;
     if (started) { cur = -1; lastIdx = -1; requestAnimationFrame(tick); }
-    else if (!reduced) { started = false; loadAll(); }   // load aborted when the page froze
+    else { started = false; loadAll(); }   // load aborted when the page froze
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) { cur = -1; lastIdx = -1; } });
 })();
