@@ -89,8 +89,11 @@
 
   function sizeCanvas() {
     const dpr = Math.min(devicePixelRatio || 1, 1.5);
-    const w = hero.clientWidth, h = hero.clientHeight;
-    if (canvas.width !== w * dpr) { canvas.width = w * dpr; canvas.height = h * dpr; }
+    const pin = hero.querySelector('.hero-pin');   // 100vh sticky viewport, NOT the 430vh wrapper
+    const w = pin.clientWidth, h = pin.clientHeight;
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+      canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    }
     return dpr;
   }
   function draw(idx) {
