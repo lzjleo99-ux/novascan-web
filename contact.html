@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — NOVASCAN 3D Scanning Studio, Serbia</title>
+<meta name="description" content="Get a fixed quote for 3D scanning — reply within 2 working hours. On-site across Serbia and the region.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="contact">
+
+<div class="topline"><span class="dot"></span><span data-i18n="top.line">Now booking on-site scans across Serbia — we reply within <b>2 hours</b></span></div>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/><circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/></svg>
+    <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span>
+  </a>
+  <nav class="main">
+    <a href="index.html" data-nav="home" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-nav="services" data-i18n="nav.services">Services</a>
+    <a href="industries.html" data-nav="industries" data-i18n="nav.industries">Industries</a>
+    <a href="technology.html" data-nav="technology" data-i18n="nav.tech">Technology</a>
+    <a href="gallery.html" data-nav="gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="contact.html" data-nav="contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="head-cta">
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="sr">SR</button></div>
+    <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+
+<section class="page-hero" style="padding-bottom:40px"><div class="container">
+  <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.contact">Contact</span></p>
+  <h1 data-i18n="ch.h1">Tell us what <em>needs</em> scanning.</h1>
+  <p class="lead" data-i18n="ch.lead">Five quick questions — then we reply with a capture plan and a fixed quote. You don't need to know the technology; that's our side of the deal.</p>
+</div></section>
+
+<section style="padding-top:10px"><div class="container">
+  <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:44px" class="contact-split">
+    <form id="quoteForm" class="panel rv" autocomplete="on">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 18px" class="form-grid">
+        <div class="field"><label for="f-name" data-i18n="f.name">Your name</label><input id="f-name" name="name" required data-i18n-ph="f.name.ph" placeholder="Ana Marković"></div>
+        <div class="field"><label for="f-email" data-i18n="f.email">Email</label><input id="f-email" name="email" type="email" required placeholder="you@email.com"></div>
+        <div class="field"><label for="f-phone" data-i18n="f.phone">Phone / WhatsApp <span style="color:var(--dim);text-transform:none;letter-spacing:0">(optional)</span></label><input id="f-phone" name="phone" type="tel" placeholder="+381 …"></div>
+        <div class="field"><label for="f-type" data-i18n="f.type">What are we scanning?</label>
+          <select id="f-type" name="type">
+            <option data-i18n="f.t1">A person / a moment (keepsake)</option>
+            <option data-i18n="f.t2">An object, artwork or product</option>
+            <option data-i18n="f.t3">A vehicle or machinery</option>
+            <option data-i18n="f.t4">A small part or jewellery</option>
+            <option data-i18n="f.t5">A complex / freeform surface</option>
+            <option data-i18n="f.t6">A heritage / museum artefact</option>
+            <option data-i18n="f.t7">Something else</option>
+          </select></div>
+        <div class="field"><label for="f-goal" data-i18n="f.goal">What's the goal?</label>
+          <select id="f-goal" name="goal">
+            <option data-i18n="f.g1">3D printing / keepsake</option>
+            <option data-i18n="f.g2">CAD model / reverse engineering</option>
+            <option data-i18n="f.g3">Inspection / measurement report</option>
+            <option data-i18n="f.g4">Archive / web viewer</option>
+          </select></div>
+        <div class="field"><label for="f-size" data-i18n="f.size">Object size</label>
+          <select id="f-size" name="size">
+            <option data-i18n="f.s1">Under 20 cm</option>
+            <option data-i18n="f.s2">20 cm – 1 m</option>
+            <option data-i18n="f.s3">1 – 5 m</option>
+            <option data-i18n="f.s4">Larger / on-site</option>
+          </select></div>
+      </div>
+      <div class="field"><label for="f-msg" data-i18n="f.msg">Anything else we should know</label><textarea id="f-msg" name="msg" data-i18n-ph="f.msg.ph" placeholder="Deadline, city, where the object stands…"></textarea></div>
+      <button class="btn btn-solid" type="submit" data-i18n="f.send">Request a fixed quote</button>
+      <div id="formHint" style="margin-top:18px"></div>
+      <p class="mono" style="margin-top:14px;font-size:11px;letter-spacing:.1em;color:var(--dim)" data-i18n="f.privacy">YOUR DATA IS USED ONLY TO ANSWER THIS REQUEST · NDA AVAILABLE</p>
+    </form>
+    <div>
+      <div class="contact-cards rv" style="grid-template-columns:1fr;gap:14px">
+        <div class="ccard"><b data-i18n="cc1.t">Email</b><a data-cfg-href="email" style="color:var(--acc);font:500 14px/1.6 var(--fm)"><span data-cfg="email">hello@novascan.rs</span></a><small data-i18n="cc1.s">Photos of your object welcome — best with a ruler or coin for scale.</small></div>
+        <div class="ccard"><b data-i18n="cc2.t">Phone &amp; WhatsApp</b><a data-cfg-href="phone" style="color:var(--acc);font:500 14px/1.6 var(--fm)"><span data-cfg="phone">+381 60 000 0000</span></a><small data-i18n="cc2.s">Mon–Sat 09–19h · Serbian, English</small></div>
+        <div class="ccard"><b data-i18n="cc3.t">Studio</b><span style="color:var(--txt);font-size:14.5px"><span data-cfg="address">Belgrade, Serbia</span></span><small data-i18n="cc3.s">On-site capture across Serbia and the region — the scanner travels to you.</small></div>
+      </div>
+      <div class="panel rv d1" style="margin-top:16px">
+        <h3 style="font:600 18px/1.3 var(--fd);margin-bottom:6px" data-i18n="ns.t">What happens next</h3>
+        <ul class="next-steps">
+          <li><i>2h</i><span data-i18n="ns.s1"><b>We reply within two working hours</b> — usually with follow-up questions about the object.</span></li>
+          <li><i>24h</i><span data-i18n="ns.s2"><b>You receive a fixed quote</b> with a capture plan and delivery date — the price won't move.</span></li>
+          <li><i>3–5d</i><span data-i18n="ns.s3"><b>We scan.</b> Most single-object jobs are captured within a week of your first message.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="cols">
+    <div>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/><circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/></svg>
+      <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span></a>
+      <p class="about" data-i18n="ft.about">A reality-capture studio based in Serbia — industrial 3D scanning, reverse-engineering support and preservation-grade digitisation.</p>
+    </div>
+    <div><h4 data-i18n="ft.explore">Explore</h4><ul>
+      <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+      <li><a href="industries.html" data-i18n="nav.industries">Industries</a></li>
+      <li><a href="technology.html" data-i18n="nav.tech">Technology</a></li>
+      <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="ft.services">We scan</h4><ul>
+      <li><a href="services.html#people" data-i18n="sv.people">People &amp; Moments</a></li>
+      <li><a href="services.html#objects" data-i18n="sv.objects">Objects &amp; Art</a></li>
+      <li><a href="services.html#vehicles" data-i18n="sv.vehicles">Vehicles &amp; Machinery</a></li>
+      <li><a href="services.html#small" data-i18n="sv.small">Small Parts &amp; Jewellery</a></li>
+      <li><a href="services.html#heritage" data-i18n="sv.heritage">Heritage &amp; Museum</a></li></ul></div>
+    <div><h4 data-i18n="ft.contact">Contact</h4>
+      <div class="contact-line"><b data-i18n="ft.email">Email</b><a data-cfg-href="email"><span data-cfg="email">hello@novascan.rs</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.phone">Phone</b><a data-cfg-href="phone"><span data-cfg="phone">+381 60 000 0000</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.addr">Studio</b><span data-cfg="address">Belgrade, Serbia</span></div>
+      <div class="contact-line"><b>WhatsApp</b><a data-cfg-href="whatsapp" target="_blank" rel="noopener" data-i18n="cta.chat">Chat with us</a></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="yy">2026</span> <span data-cfg="brand">NOVASCAN</span> · <span data-i18n="ft.rights">All rights reserved</span></span>
+    <span class="mono" data-i18n="ft.legal">PENDING: company reg. no. (PIB/MB) — placeholder site for testing</span>
+  </div>
+</div></footer>
+
+<style>.form-grid{grid-template-columns:1fr 1fr}@media(max-width:640px){.form-grid{grid-template-columns:1fr}.contact-split{grid-template-columns:1fr!important}}</style>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

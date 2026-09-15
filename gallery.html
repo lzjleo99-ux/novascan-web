@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery — NOVASCAN 3D Scanning Studio, Serbia</title>
+<meta name="description" content="Sample 3D scanning cases — heritage, product, reverse engineering, inspection, art and jewellery.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="gallery">
+
+<div class="topline"><span class="dot"></span><span data-i18n="top.line">Now booking on-site scans across Serbia — we reply within <b>2 hours</b></span></div>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="index.html">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/><circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/></svg>
+    <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span>
+  </a>
+  <nav class="main">
+    <a href="index.html" data-nav="home" data-i18n="nav.home">Home</a>
+    <a href="services.html" data-nav="services" data-i18n="nav.services">Services</a>
+    <a href="industries.html" data-nav="industries" data-i18n="nav.industries">Industries</a>
+    <a href="technology.html" data-nav="technology" data-i18n="nav.tech">Technology</a>
+    <a href="gallery.html" data-nav="gallery" data-i18n="nav.gallery">Gallery</a>
+    <a href="contact.html" data-nav="contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+  <div class="head-cta">
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="sr">SR</button></div>
+    <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></header>
+
+<section class="page-hero" style="padding-bottom:30px"><div class="container">
+  <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.gallery">Gallery</span></p>
+  <h1 data-i18n="gh.h1">Point clouds <em>tell it</em> better.</h1>
+  <p class="lead" data-i18n="gh.lead">A sample gallery of typical capture work — shown as raw point clouds, exactly the data we deliver.</p>
+  <p class="mono rv" style="margin-top:18px;font-size:11px;letter-spacing:.14em;color:var(--dim)" data-i18n="gh.note">NOTE: PLACEHOLDER VISUALS — CLIENT PROJECT GALLERY PUBLISHING SOON</p>
+</div></section>
+
+<section style="padding-top:10px"><div class="container">
+  <div class="filters rv">
+    <button class="on" data-f="all" data-i18n="g.f.all">All</button>
+    <button data-f="heritage" data-i18n="g.f.heritage">Heritage</button>
+    <button data-f="product" data-i18n="g.f.product">Product</button>
+    <button data-f="industry" data-i18n="g.f.industry">Industry</button>
+    <button data-f="art" data-i18n="g.f.art">Art</button>
+  </div>
+  <div class="grid3" id="caseGrid">
+    <div class="case rv" data-cat="heritage" data-title="Museum amphora — conservation archive"
+      data-body="A ceramic amphora digitised in a single gallery session, without the object leaving its display room. The watertight archive mesh records surface condition down to 0.1 mm for future conservation comparisons; a scale replica was printed for the gift shop."
+      data-deliv="Deliverables: OBJ + PLY archive · 3D web viewer · 3D-printed replica">
+      <img src="assets/img/cases/amphora.webp" alt="Amphora point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c1.tag">Heritage</span><b data-i18n="g.c1.t">Museum amphora — archive &amp; replica</b><p data-i18n="g.c1.p">Scanned in-gallery, zero contact. Archive mesh + printed replica.</p></div>
+    </div>
+    <div class="case rv d1" data-cat="product" data-title="Chess set — tournament reproduction"
+      data-body="An out-of-production tournament chess set was scanned piece by piece and re-modelled for CNC and resin printing. The club now owns a permanent digital archive of every piece, ready to reproduce at any scale."
+      data-deliv="Deliverables: STL per piece · print-ready supports · scale sheet">
+      <img src="assets/img/cases/pawn.webp" alt="Chess pawn point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c2.tag">Product</span><b data-i18n="g.c2.t">Chess set — tournament reproduction</b><p data-i18n="g.c2.p">Every piece digitised; the club owns a permanent digital archive.</p></div>
+    </div>
+    <div class="case rv d2" data-cat="industry" data-title="Replacement gear — out of production"
+      data-body="A drive gear for machinery with no available spare parts was captured in high-definition parallel-laser mode and re-modelled against measured shaft datums. The new tooth profile matched the original within 0.1 mm."
+      data-deliv="Deliverables: STEP surfaces · inspection report · print-ready prototype">
+      <img src="assets/img/cases/gear.webp" alt="Gear point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c3.tag">Reverse engineering</span><b data-i18n="g.c3.t">Replacement gear — out of production</b><p data-i18n="g.c3.p">Tooth profile re-modelled to within 0.1 mm of the original.</p></div>
+    </div>
+    <div class="case rv" data-cat="industry" data-title="Turbine blade — first-article inspection"
+      data-body="A cast turbine blade scanned and aligned to the customer's CAD datums. A colour deviation report shows where the casting drifted from nominal — accepted at first article without a second round."
+      data-deliv="Deliverables: deviation colour map · dimensional report · PLY archive">
+      <img src="assets/img/cases/blade.webp" alt="Turbine blade point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c4.tag">Inspection</span><b data-i18n="g.c4.t">Turbine blade — first-article inspection</b><p data-i18n="g.c4.p">Colour deviation map against CAD; accepted at first article.</p></div>
+    </div>
+    <div class="case rv d1" data-cat="art" data-title="Sculpture — enlargement study"
+      data-body="A maquette scanned for a 3× enlargement. The print-ready scaled mesh preserved the artist's surface marks exactly — chisel lines included — and the enlargement was milled without a single re-sculpting pass."
+      data-deliv="Deliverables: scaled watertight mesh · milling-ready sections · archive PLY">
+      <img src="assets/img/cases/knot.webp" alt="Sculpture study point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c5.tag">Art</span><b data-i18n="g.c5.t">Sculpture — 3× enlargement study</b><p data-i18n="g.c5.p">Artist's surface marks preserved exactly at 3× scale.</p></div>
+    </div>
+    <div class="case rv d2" data-cat="product" data-title="Signet ring — master to mould"
+      data-body="A jeweller's master ring captured in HD mode, then scaled to a full size run. The scan also became the shop's 3D web viewer — customers rotate the exact piece before ordering."
+      data-deliv="Deliverables: STL master · size-run meshes · embedded 3D viewer">
+      <img src="assets/img/cases/ring.webp" alt="Ring point cloud" loading="lazy">
+      <div class="meta"><span data-i18n="g.c6.tag">Jewellery</span><b data-i18n="g.c6.t">Signet ring — master to mould</b><p data-i18n="g.c6.p">HD capture; the scan doubles as the shop's 3D web viewer.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- modal -->
+<div class="modal" id="caseModal" role="dialog" aria-modal="true">
+  <div class="bg"></div>
+  <div class="box">
+    <button class="x" aria-label="Close">✕</button>
+    <img id="mImg" src="" alt="">
+    <p class="eyebrow" id="mTag">—</p>
+    <h3 id="mTitle" style="font:600 24px/1.2 var(--fd);margin:12px 0 14px">—</h3>
+    <p id="mBody" style="color:var(--mut);font-size:15px">—</p>
+    <p class="mono" id="mDeliv" style="margin-top:18px;font-size:12.5px;color:var(--acc);letter-spacing:.04em">—</p>
+  </div>
+</div>
+
+<section class="cta-band"><div class="container">
+  <h2 class="rv" data-i18n="cb.t">Have an object in mind? Send us a photo.</h2>
+  <div class="row rv d1">
+    <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+    <a class="btn btn-ghost" data-cfg-href="email" data-i18n="cta.email">Email us</a>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="cols">
+    <div>
+      <a class="brand" href="index.html"><svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/><circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/></svg>
+      <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span></a>
+      <p class="about" data-i18n="ft.about">A reality-capture studio based in Serbia — industrial 3D scanning, reverse-engineering support and preservation-grade digitisation.</p>
+    </div>
+    <div><h4 data-i18n="ft.explore">Explore</h4><ul>
+      <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+      <li><a href="industries.html" data-i18n="nav.industries">Industries</a></li>
+      <li><a href="technology.html" data-i18n="nav.tech">Technology</a></li>
+      <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li></ul></div>
+    <div><h4 data-i18n="ft.services">We scan</h4><ul>
+      <li><a href="services.html#people" data-i18n="sv.people">People &amp; Moments</a></li>
+      <li><a href="services.html#objects" data-i18n="sv.objects">Objects &amp; Art</a></li>
+      <li><a href="services.html#vehicles" data-i18n="sv.vehicles">Vehicles &amp; Machinery</a></li>
+      <li><a href="services.html#small" data-i18n="sv.small">Small Parts &amp; Jewellery</a></li>
+      <li><a href="services.html#heritage" data-i18n="sv.heritage">Heritage &amp; Museum</a></li></ul></div>
+    <div><h4 data-i18n="ft.contact">Contact</h4>
+      <div class="contact-line"><b data-i18n="ft.email">Email</b><a data-cfg-href="email"><span data-cfg="email">hello@novascan.rs</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.phone">Phone</b><a data-cfg-href="phone"><span data-cfg="phone">+381 60 000 0000</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.addr">Studio</b><span data-cfg="address">Belgrade, Serbia</span></div>
+      <div class="contact-line"><b>WhatsApp</b><a data-cfg-href="whatsapp" target="_blank" rel="noopener" data-i18n="cta.chat">Chat with us</a></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="yy">2026</span> <span data-cfg="brand">NOVASCAN</span> · <span data-i18n="ft.rights">All rights reserved</span></span>
+    <span class="mono" data-i18n="ft.legal">PENDING: company reg. no. (PIB/MB) — placeholder site for testing</span>
+  </div>
+</div></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lzjleo99-ux.github.io/novascan-3d/sitemap.xml

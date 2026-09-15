@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVASCAN — 3D Scanning Studio, Serbia</title>
+<meta name="description" content="Industrial-grade 3D scanning in Serbia — people, products, vehicles, heritage. 0.05 mm point distance, on-site wireless capture, CAD-ready deliverables.">
+<meta property="og:title" content="NOVASCAN — We turn reality into data">
+<meta property="og:description" content="Industrial-grade 3D scanning in Serbia — people, products, vehicles, heritage.">
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-page="home">
+
+<div class="topline"><span class="dot"></span><span data-i18n="top.line">Now booking on-site scans across Serbia — we reply within <b>2 hours</b></span></div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/>
+        <circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/>
+        <circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/>
+      </svg>
+      <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span>
+    </a>
+    <nav class="main">
+      <a href="index.html" data-nav="home" data-i18n="nav.home">Home</a>
+      <a href="services.html" data-nav="services" data-i18n="nav.services">Services</a>
+      <a href="industries.html" data-nav="industries" data-i18n="nav.industries">Industries</a>
+      <a href="technology.html" data-nav="technology" data-i18n="nav.tech">Technology</a>
+      <a href="gallery.html" data-nav="gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="contact.html" data-nav="contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="head-cta">
+      <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="sr">SR</button></div>
+      <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SCROLL-VIDEO HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-pin">
+    <img id="heroPoster" alt="" aria-hidden="true">
+    <canvas id="heroCanvas" aria-label="3D scanning animation"></canvas>
+    <div class="hero-load"><div class="bar"><i></i></div><span>LOADING SEQUENCE 0%</span></div>
+    <div class="hero-ui">
+      <div class="hero-head">
+        <p class="eyebrow" style="justify-content:center" data-i18n="hero.eyebrow">3D scanning studio — Serbia</p>
+        <h1 data-i18n="hero.h1">We turn reality into <em>data</em>.</h1>
+        <p data-i18n="hero.sub">Industrial-grade 3D scanning for people, products and heritage — down to 0.05&nbsp;mm, anywhere in Serbia.</p>
+        <div class="h-cta">
+          <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+          <a class="btn btn-ghost" href="services.html" data-i18n="cta.scan">See what we scan</a>
+        </div>
+      </div>
+      <div class="hero-cap cap-a"><div class="cap-body">
+        <h2 data-i18n="cap1.t">4.8 million points per second.</h2>
+        <p data-i18n="cap1.p">Handheld blue-laser capture at 0.05&nbsp;mm point distance — surface detail preserved, not approximated.</p>
+      </div></div>
+      <div class="hero-cap cap-b"><div class="cap-body">
+        <h2 data-i18n="cap2.t">From raw points to watertight mesh.</h2>
+        <p data-i18n="cap2.p">Noise filtered, holes filled, surfaces smoothed — a model ready for CAD, 3D printing or the web.</p>
+      </div></div>
+      <div class="hero-end">
+        <h3 data-i18n="end.t">One scan. Infinite applications.</h3>
+        <div class="row">
+          <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+          <a class="btn btn-ghost" href="gallery.html" data-i18n="cta.gallery">View the gallery</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-hud"><span class="hp-time">00:00 / 00:16</span><div class="hp-bar"><i></i></div></div>
+    <div class="hero-hint" data-i18n="hero.hint">SCROLL</div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats"><div class="wrap">
+  <div class="stat rv"><b><span class="count" data-to="0.05" data-dec="2">0</span><i>mm</i></b><span data-i18n="st1.l">point distance</span></div>
+  <div class="stat rv d1"><b><span class="count" data-to="4.8" data-dec="1">0</span><i>M pts/s</i></b><span data-i18n="st2.l">capture rate</span></div>
+  <div class="stat rv d2"><b>160–1500<i>mm</i></b><span data-i18n="st3.l">working range</span></div>
+  <div class="stat rv d3"><b>≤48<i>h</i></b><span data-i18n="st4.l">typical delivery</span></div>
+</div></div>
+
+<!-- ============ DOMAINS ============ -->
+<section><div class="container">
+  <p class="eyebrow rv" data-i18n="dom.eyebrow">What we scan</p>
+  <h2 class="sec-title rv" data-i18n="dom.title">Every object has a digital twin waiting.</h2>
+  <p class="sec-sub rv d1" data-i18n="dom.sub">Six capture disciplines, one standard of precision. If it has a surface, we can digitise it.</p>
+  <div class="grid3" style="margin-top:48px">
+    <a class="card rv" href="services.html#people">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.4-3.6 4.1-5.4 7.5-5.4s6.1 1.8 7.5 5.4"/></svg></div>
+      <span class="tagline" data-i18n="d1.tag">People</span>
+      <h3 data-i18n="d1.t">People &amp; Moments</h3>
+      <p data-i18n="d1.p">Portraits, memorial figurines, wedding moments — captured gently with laser-free infrared.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+    <a class="card rv d1" href="services.html#objects">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 3h6M10 3c0 3-2.5 4-2.5 7 0 2.6 1.6 3.6 1.6 5.5 0 2.4-1.6 3-1.6 5.5h8.2c0-2.5-1.6-3.1-1.6-5.5 0-1.9 1.6-2.9 1.6-5.5C15.7 7 13.2 6 13.2 3"/></svg></div>
+      <span class="tagline" data-i18n="d2.tag">Art &amp; product</span>
+      <h3 data-i18n="d2.t">Objects &amp; Art</h3>
+      <p data-i18n="d2.p">Sculptures, artworks, antiques and prototypes — archived, replicated or sold online in 3D.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+    <a class="card rv d2" href="services.html#vehicles">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 13l1.7-4.3c.4-1 1.3-1.7 2.4-1.7h9.8c1.1 0 2 .7 2.4 1.7L21 13v5h-2.5M3 18v-5m0 5h2.5m13 0a1.8 1.8 0 1 1-3.6 0m-9.4 0a1.8 1.8 0 1 1 3.6 0"/></svg></div>
+      <span class="tagline" data-i18n="d3.tag">Large objects</span>
+      <h3 data-i18n="d3.t">Vehicles &amp; Machinery</h3>
+      <p data-i18n="d3.p">Cars, trucks, agri and industrial equipment — complete external geometry in one session.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+    <a class="card rv" href="services.html#small">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></div>
+      <span class="tagline" data-i18n="d4.tag">Micro</span>
+      <h3 data-i18n="d4.t">Small Parts &amp; Jewellery</h3>
+      <p data-i18n="d4.p">Gears, components, jewellery and miniatures — scanned in high-definition parallel-laser mode.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+    <a class="card rv d1" href="services.html#freeform">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 15c3-6 6-6 9 0s6 6 9 0M3 9c3-6 6-6 9 0s6 6 9 0"/></svg></div>
+      <span class="tagline" data-i18n="d5.tag">Freeform</span>
+      <h3 data-i18n="d5.t">Complex Freeform</h3>
+      <p data-i18n="d5.p">Organic surfaces, turbines, castings — anything that defeats calipers and conventional measurement.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+    <a class="card rv d2" href="services.html#heritage">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 21h18M4 9h16M12 3 4 9h16L12 3zM6 9v9M10 9v9M14 9v9M18 9v9"/></svg></div>
+      <span class="tagline" data-i18n="d6.tag">Heritage</span>
+      <h3 data-i18n="d6.t">Heritage &amp; Museum</h3>
+      <p data-i18n="d6.p">Artefacts digitised for conservation, replicas, archives and interactive exhibits.</p>
+      <span class="go" data-i18n="cta.more">Explore</span>
+    </a>
+  </div>
+</div></section>
+
+<!-- ============ INDUSTRIES MARQUEE ============ -->
+<div class="marq"><div class="in" data-i18n="marq.items">
+  <span>Manufacturing QC</span><span>Automotive</span><span>Medical &amp; Orthotics</span><span>Museums &amp; Heritage</span><span>Film · Games · AR/VR</span><span>Forensics</span><span>Architecture</span><span>Jewellery</span><span>Education</span><span>Aerospace</span>
+  <span>Manufacturing QC</span><span>Automotive</span><span>Medical &amp; Orthotics</span><span>Museums &amp; Heritage</span><span>Film · Games · AR/VR</span><span>Forensics</span><span>Architecture</span><span>Jewellery</span><span>Education</span><span>Aerospace</span>
+</div></div>
+<div class="marq rev" style="border-top:0"><div class="in" data-i18n="marq.items2">
+  <span>Reverse engineering</span><span>3D printing</span><span>Inspection reports</span><span>Digital archives</span><span>Web viewers</span><span>Keepsakes</span><span>Replicas</span><span>Prototyping</span><span>Conservation</span>
+  <span>Reverse engineering</span><span>3D printing</span><span>Inspection reports</span><span>Digital archives</span><span>Web viewers</span><span>Keepsakes</span><span>Replicas</span><span>Prototyping</span><span>Conservation</span>
+</div></div>
+
+<!-- ============ PROCESS ============ -->
+<section><div class="container">
+  <p class="eyebrow rv" data-i18n="pr.eyebrow">How it works</p>
+  <h2 class="sec-title rv" data-i18n="pr.title">You don't need to know the technology.</h2>
+  <div class="steps" style="margin-top:44px">
+    <div class="step rv"><b>01</b><h3 data-i18n="pr.s1.t">Brief</h3><p data-i18n="pr.s1.p">Tell us the object, the goal and the deadline. We recommend the right approach — fixed quote, no surprises.</p></div>
+    <div class="step rv d1"><b>02</b><h3 data-i18n="pr.s2.t">Scan</h3><p data-i18n="pr.s2.p">On-site or in-studio. Non-contact capture, safe for people, animals and fragile objects.</p></div>
+    <div class="step rv d2"><b>03</b><h3 data-i18n="pr.s3.t">Process</h3><p data-i18n="pr.s3.p">Alignment, meshing, refinement — and when needed, CAD-ready surfaces and inspection reports.</p></div>
+    <div class="step rv d3"><b>04</b><h3 data-i18n="pr.s4.t">Deliver</h3><p data-i18n="pr.s4.p">STL, OBJ, PLY, 3MF or STEP — plus measurement reports and shareable web viewers on request.</p></div>
+  </div>
+</div></section>
+
+<!-- ============ PEOPLE & MOMENTS ============ -->
+<section class="warm"><div class="container warm-grid">
+  <div class="split">
+    <div>
+      <p class="eyebrow rv" data-i18n="wm.eyebrow">People &amp; moments</p>
+      <h2 class="sec-title rv" data-i18n="wm.title">Some things you can't <em>re-order</em>.</h2>
+      <p class="lead rv d1" data-i18n="wm.lead">A parent's hands. A first dance. A dog who waited at the door. We scan them exactly as they are — and turn a fleeting moment into something you can hold.</p>
+      <div class="moments">
+        <div class="moment rv"><i>01</i><div><b data-i18n="wm.m1.t">Remember someone</b><span data-i18n="wm.m1.p">A lifelike figurine or bust from a single portrait session — dignified, private, unhurried.</span></div></div>
+        <div class="moment rv d1"><i>02</i><div><b data-i18n="wm.m2.t">Weddings &amp; celebrations</b><span data-i18n="wm.m2.p">The dress, the couple, the bouquet — frozen mid-moment as a keepsake or cake topper.</span></div></div>
+        <div class="moment rv d2"><i>03</i><div><b data-i18n="wm.m3.t">Pets, exactly as they are</b><span data-i18n="wm.m3.p">No posing required. We scan sleeping dogs and impatient cats — it takes only minutes.</span></div></div>
+      </div>
+      <div style="display:flex;gap:16px;align-items:center;margin-top:32px;flex-wrap:wrap">
+        <a class="btn btn-warm" href="contact.html" data-i18n="cta.book">Book a private session</a>
+        <span class="mono" style="font-size:11.5px;color:#a8979d;letter-spacing:.08em" data-i18n="wm.note">Infrared capture — no laser, no contact · studio or your home</span>
+      </div>
+    </div>
+    <div class="visual rv d1">
+      <img src="assets/img/cases/amphora.webp" alt="Point-cloud capture" loading="lazy">
+      <div class="cap"><b data-i18n="wm.cap.b">Every session is private.</b><br><span data-i18n="wm.cap.p">Your data never leaves our studio without your written consent.</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ PROOF / SAMPLE ============ -->
+<section><div class="container" style="text-align:center">
+  <p class="eyebrow rv" style="justify-content:center" data-i18n="pf.eyebrow">Proof, not promises</p>
+  <h2 class="sec-title rv" data-i18n="pf.title">See a sample scan of your own part.</h2>
+  <p class="sec-sub rv d1" style="margin:0 auto" data-i18n="pf.p">Send a photo of the object — we reply with a capture plan and a fixed quote within one business day.</p>
+  <div class="rv d2" style="display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap">
+    <a class="btn btn-solid" data-cfg-href="email" data-i18n="cta.email">Email us</a>
+    <a class="btn btn-ghost" data-cfg-href="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</div></section>
+
+<!-- ============ FAQ TEASER ============ -->
+<section style="padding-top:0"><div class="container">
+  <p class="eyebrow rv" data-i18n="fq.eyebrow">Questions</p>
+  <h2 class="sec-title rv" data-i18n="fq.title">Asked often, answered straight.</h2>
+  <div class="faq" style="margin-top:40px;max-width:860px">
+    <details class="rv"><summary data-i18n="fq1.q">How accurate is "accurate"?</summary><div class="a"><span data-i18n="fq1.a">Point distance down to 0.05 mm and volumetric accuracy of 0.04 + 0.06 mm/m — and we publish the measured numbers with every job.</span><br><a class="btn btn-ghost" href="technology.html" data-i18n="cta.tech">See full specifications</a></div></details>
+    <details class="rv d1"><summary data-i18n="fq2.q">Do you come to us?</summary><div class="a" data-i18n="fq2.a">Yes — fully wireless scanning means we bring the studio to your factory floor, showroom or living room, anywhere in Serbia and the region.</div></details>
+    <details class="rv d2"><summary data-i18n="fq3.q">What exactly do we receive?</summary><div class="a"><span data-i18n="fq3.a">Your choice of mesh formats (STL / OBJ / PLY / 3MF), measurement reports, and a shareable 3D web viewer for every project.</span><br><a class="btn btn-ghost" href="contact.html" data-i18n="cta.quote">Get a quote</a></div></details>
+  </div>
+</div></section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-band"><div class="container">
+  <h2 class="rv" data-i18n="cb.t">Have an object in mind? Send us a photo.</h2>
+  <div class="row rv d1">
+    <a class="btn btn-solid" href="contact.html" data-i18n="cta.quote">Get a quote</a>
+    <a class="btn btn-ghost" data-cfg-href="email" data-i18n="cta.email">Email us</a>
+  </div>
+</div></section>
+
+<!-- ============ FOOTER ============ -->
+<footer><div class="container">
+  <div class="cols">
+    <div>
+      <a class="brand" href="index.html">
+        <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 4 5 22M16 4l11 18M5 22h22M16 4v11M5 22l11-7 11 7" stroke="rgba(94,203,255,.45)" stroke-width="1"/>
+          <circle cx="16" cy="4" r="2.4" fill="#3ee6d0"/><circle cx="5" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/>
+          <circle cx="27" cy="22" r="2.4" fill="#3ee6d0" opacity=".7"/><circle cx="16" cy="15" r="1.8" fill="#5ecbff"/>
+        </svg>
+        <span><span data-cfg="brand">NOVASCAN</span><small data-i18n="ft.tagline">REALITY CAPTURE STUDIO</small></span>
+      </a>
+      <p class="about" data-i18n="ft.about">A reality-capture studio based in Serbia — industrial 3D scanning, reverse-engineering support and preservation-grade digitisation.</p>
+    </div>
+    <div>
+      <h4 data-i18n="ft.explore">Explore</h4>
+      <ul>
+        <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="industries.html" data-i18n="nav.industries">Industries</a></li>
+        <li><a href="technology.html" data-i18n="nav.tech">Technology</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="ft.services">We scan</h4>
+      <ul>
+        <li><a href="services.html#people" data-i18n="sv.people">People &amp; Moments</a></li>
+        <li><a href="services.html#objects" data-i18n="sv.objects">Objects &amp; Art</a></li>
+        <li><a href="services.html#vehicles" data-i18n="sv.vehicles">Vehicles &amp; Machinery</a></li>
+        <li><a href="services.html#small" data-i18n="sv.small">Small Parts &amp; Jewellery</a></li>
+        <li><a href="services.html#heritage" data-i18n="sv.heritage">Heritage &amp; Museum</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="ft.contact">Contact</h4>
+      <div class="contact-line"><b data-i18n="ft.email">Email</b><a data-cfg-href="email"><span data-cfg="email">hello@novascan.rs</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.phone">Phone</b><a data-cfg-href="phone"><span data-cfg="phone">+381 60 000 0000</span></a></div>
+      <div class="contact-line"><b data-i18n="ft.addr">Studio</b><span data-cfg="address">Belgrade, Serbia</span></div>
+      <div class="contact-line"><b>WhatsApp</b><a data-cfg-href="whatsapp" target="_blank" rel="noopener" data-i18n="cta.chat">Chat with us</a></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© <span id="yy">2026</span> <span data-cfg="brand">NOVASCAN</span> · <span data-i18n="ft.rights">All rights reserved</span></span>
+    <span class="mono" data-i18n="ft.legal">PENDING: company reg. no. (PIB/MB) — placeholder site for testing</span>
+  </div>
+</div></footer>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/hero.js"></script>
+</body>
+</html>
