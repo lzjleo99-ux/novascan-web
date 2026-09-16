@@ -6,9 +6,10 @@ const SITE = {
   brand: 'NOVASCAN',                  // 品牌名（全站替换）
   tagline: 'REALITY CAPTURE STUDIO',  // 品牌副标
   email: 'hello@novascan.rs',         // TODO: 换成你的邮箱
-  phone: '+381 60 000 0000',          // TODO: 换成你的电话（显示格式）
-  whatsapp: '381600000000',           // TODO: WhatsApp 号码（纯数字，国际格式）
-  address: 'Belgrade, Serbia',        // TODO: 详细地址
+  phone: '+381 64 8086125',           // 电话（显示格式）
+  whatsapp: '381648086125',           // WhatsApp 号码（纯数字，国际格式）
+  viber: 'https://viber.me/381648086125', // Viber 聊天链接（Business 账号）
+  address: 'Novi Sad, Serbia',        // 地址
   instagram: '#',                     // TODO: 社交链接
   linkedin: '#',
 };
@@ -28,6 +29,7 @@ const SITE = {
     if (k === 'email') a.href = 'mailto:' + SITE.email;
     else if (k === 'phone') a.href = 'tel:' + SITE.phone.replace(/[^+\d]/g, '');
     else if (k === 'whatsapp') a.href = 'https://wa.me/' + SITE.whatsapp;
+    else if (k === 'viber') a.href = SITE.viber;
     else if (SITE[k] !== undefined) a.href = SITE[k];
   });
 
@@ -104,7 +106,8 @@ const SITE = {
       hint.innerHTML =
         '<a class="btn btn-solid" href="mailto:' + SITE.email + '?subject=' +
         encodeURIComponent('Scan request — ' + (d.type || 'general')) + '&body=' + encodeURIComponent(body) +
-        '">Open email draft</a> <a class="btn btn-ghost" target="_blank" href="' + wa + '">Send via WhatsApp</a>';
+        '">Open email draft</a> <a class="btn btn-ghost" target="_blank" href="' + wa + '">Send via WhatsApp</a>' +
+        ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Send via Viber</a>';
       hint.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
       location.href = 'mailto:' + SITE.email + '?subject=' + encodeURIComponent('Scan request') + '&body=' + encodeURIComponent(body);
