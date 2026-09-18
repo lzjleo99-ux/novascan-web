@@ -2,7 +2,7 @@
    EN copy lives in the HTML; this dictionary only swaps when lang=sr. */
 window.NV_I18N = (function () {
   const SR = {
-    'top.line': 'Zakazujemo skeniranje na terenu širom Srbije — odgovaramo za <b>2 sata</b>',
+    'top.line': 'Zakazujemo skeniranje na terenu širom Srbije — odgovaramo za <b>istog dana</b>',
     'nav.home': 'Početna', 'nav.services': 'Usluge', 'nav.industries': 'Primene',
     'nav.tech': 'Tehnologija', 'nav.gallery': 'Galerija', 'nav.contact': 'Kontakt',
     'cta.quote': 'Zatražite ponudu', 'cta.scan': 'Pogledajte šta skeniramo',
