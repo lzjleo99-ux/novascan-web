@@ -5,7 +5,7 @@
 const SITE = {
   brand: 'NOVASCAN',                  // 品牌名（全站替换）
   tagline: 'REALITY CAPTURE STUDIO',  // 品牌副标
-  email: 'hello@novascan.rs',         // TODO: 换成你的邮箱
+  email: 'info@biopoly.rs',              // 联系邮箱
   phone: '+381 64 8086125',           // 电话（显示格式）
   whatsapp: '381648086125',           // WhatsApp 号码（纯数字，国际格式）
   viber: 'https://viber.me/381648086125', // Viber 聊天链接（Business 账号）
