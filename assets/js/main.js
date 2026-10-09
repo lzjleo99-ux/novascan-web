@@ -89,9 +89,8 @@ const SITE = {
   }
 
   /* ----- contact form (FormSubmit.co → info@biopoly.rs, no backend needed) -----
-     Form posts via fetch to FormSubmit; on success the form data is emailed
-     directly to SITE.email. First-ever submission triggers a one-time
-     activation email — click the link in that email to start receiving. */
+     Uses a hidden iframe + regular form POST so there are no CORS issues.
+     On success the form data is emailed directly to SITE.email. */
   const form = $('#quoteForm');
   if (form) form.addEventListener('submit', ev => {
     ev.preventDefault();
@@ -101,55 +100,77 @@ const SITE = {
     btn.textContent = sr ? 'Slanje…' : 'Sending…';
     btn.disabled = true;
 
-    const data = new FormData(form);
-    data.append('_subject', '3D Scanning Service Request — ' + (data.get('name') || 'Website enquiry'));
-    data.append('_template', 'table');
+    /* Build a hidden form that POSTs into an invisible iframe — bypasses CORS entirely */
+    const iframe = document.createElement('iframe');
+    iframe.name = 'formsubmit-target';
+    iframe.style.cssText = 'position:absolute;width:0;height:0;border:0;visibility:hidden';
+    document.body.appendChild(iframe);
 
-    fetch('https://formsubmit.co/ajax/' + SITE.email, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    })
-      .then(r => r.json())
-      .then(j => {
-        if (j.success === 'true' || j.success) {
-          form.style.display = 'none';
-          const ok = $('#formHint') || document.createElement('div');
-          ok.id = 'formHint';
-          ok.innerHTML =
-            '<div class="panel rv in" style="text-align:center;padding:40px 24px">' +
-            '<div style="font-size:42px;margin-bottom:12px">✓</div>' +
-            '<h3 style="font:600 22px/1.3 var(--fd);margin-bottom:8px">' +
-            (sr ? 'Hvala! Poruka je poslata.' : 'Thank you! Your message has been sent.') + '</h3>' +
-            '<p style="color:var(--mut);font-size:14px;line-height:1.6">' +
-            (sr ? 'Odgovaramo na <b>info@biopoly.rs</b> u toku dana. Proverite i spam folder ako ne vidite odgovor.'
-                : 'We reply to <b>info@biopoly.rs</b> within the same day. Please also check your spam folder if you don\'t see a reply.') +
-            '</p></div>';
-          ok.style.marginTop = '0';
-          form.parentNode.insertBefore(ok, form.nextSibling);
-          ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          throw new Error('not successful');
-        }
-      })
-      .catch(() => {
-        btn.textContent = orig;
-        btn.disabled = false;
-        const hint = $('#formHint');
-        if (hint) {
-          const wa = 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(
-            'Name: ' + (data.get('name') || '-') + '\nEmail: ' + (data.get('email') || '-') +
-            '\nPhone: ' + (data.get('phone') || '-') + '\nType: ' + (data.get('type') || '-') +
-            '\nGoal: ' + (data.get('goal') || '-') + '\nSize: ' + (data.get('size') || '-') +
-            '\n\n' + (data.get('msg') || ''));
-          hint.innerHTML =
-            '<p style="color:var(--acc);font-size:13px;margin-bottom:10px">' +
-            (sr ? 'Greška pri slanju — pokušajte putem WhatsApp-a ili Viber-a:'
-                : 'Submission error — please try via WhatsApp or Viber:') + '</p>' +
-            '<a class="btn btn-ghost" target="_blank" href="' + wa + '">WhatsApp</a>' +
-            ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Viber</a>';
-        }
-      });
+    const hidden = document.createElement('form');
+    hidden.method = 'POST';
+    hidden.action = 'https://formsubmit.co/' + SITE.email;
+    hidden.target = 'formsubmit-target';
+    hidden.style.display = 'none';
+
+    const fd = new FormData(form);
+    fd.append('_subject', '3D Scanning Service Request — ' + (fd.get('name') || 'Website enquiry'));
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+    for (const [k, v] of fd.entries()) {
+      const i = document.createElement('input');
+      i.type = 'hidden'; i.name = k; i.value = v;
+      hidden.appendChild(i);
+    }
+    document.body.appendChild(hidden);
+
+    let done = false;
+    const showSuccess = () => {
+      if (done) return; done = true;
+      form.style.display = 'none';
+      const ok = $('#formHint') || document.createElement('div');
+      ok.id = 'formHint';
+      ok.innerHTML =
+        '<div class="panel rv in" style="text-align:center;padding:40px 24px">' +
+        '<div style="font-size:42px;margin-bottom:12px">✓</div>' +
+        '<h3 style="font:600 22px/1.3 var(--fd);margin-bottom:8px">' +
+        (sr ? 'Hvala! Poruka je poslata.' : 'Thank you! Your message has been sent.') + '</h3>' +
+        '<p style="color:var(--mut);font-size:14px;line-height:1.6">' +
+        (sr ? 'Odgovaramo u toku dana. Proverite i spam folder.'
+            : 'We reply within the same day. Please also check your spam folder if you don\'t see a reply.') +
+        '</p></div>';
+      ok.style.marginTop = '0';
+      form.parentNode.insertBefore(ok, form.nextSibling);
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => { iframe.remove(); hidden.remove(); }, 2000);
+    };
+
+    const showError = () => {
+      if (done) return; done = true;
+      btn.textContent = orig;
+      btn.disabled = false;
+      const hint = $('#formHint');
+      if (hint) {
+        const wa = 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(
+          'Name: ' + (fd.get('name') || '-') + '\nEmail: ' + (fd.get('email') || '-') +
+          '\nPhone: ' + (fd.get('phone') || '-') + '\nType: ' + (fd.get('type') || '-') +
+          '\nGoal: ' + (fd.get('goal') || '-') + '\nSize: ' + (fd.get('size') || '-') +
+          '\n\n' + (fd.get('msg') || ''));
+        hint.innerHTML =
+          '<p style="color:var(--acc);font-size:13px;margin-bottom:10px">' +
+          (sr ? 'Greška pri slanju — pokušajte putem WhatsApp-a ili Viber-a:'
+              : 'Submission error — please try via WhatsApp or Viber:') + '</p>' +
+          '<a class="btn btn-ghost" target="_blank" href="' + wa + '">WhatsApp</a>' +
+          ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Viber</a>';
+      }
+      iframe.remove(); hidden.remove();
+    };
+
+    /* The iframe load event fires when FormSubmit responds (redirects to its
+       thank-you page inside the hidden frame). That signals success. */
+    iframe.addEventListener('load', showSuccess);
+    /* Safety timeout — if no response in 12s, show error */
+    setTimeout(showError, 12000);
+    hidden.submit();
   });
 
   /* ----- language ----- */
