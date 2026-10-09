@@ -88,39 +88,68 @@ const SITE = {
     }));
   }
 
-  /* ----- contact form (mailto + whatsapp, no backend needed) ----- */
+  /* ----- contact form (FormSubmit.co → info@biopoly.rs, no backend needed) -----
+     Form posts via fetch to FormSubmit; on success the form data is emailed
+     directly to SITE.email. First-ever submission triggers a one-time
+     activation email — click the link in that email to start receiving. */
   const form = $('#quoteForm');
   if (form) form.addEventListener('submit', ev => {
     ev.preventDefault();
-    const d = Object.fromEntries(new FormData(form).entries());
-    const body =
-      'Name: ' + (d.name || '-') + '\n' +
-      'Email: ' + (d.email || '-') + '\n' +
-      'Phone: ' + (d.phone || '-') + '\n' +
-      'Object type: ' + (d.type || '-') + '\n' +
-      'Goal: ' + (d.goal || '-') + '\n' +
-      'Size: ' + (d.size || '-') + '\n\n' + (d.msg || '');
+    const btn = form.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    const sr = document.documentElement.lang === 'sr';
+    btn.textContent = sr ? 'Slanje…' : 'Sending…';
+    btn.disabled = true;
 
-    /* Direct email — opens user's email client, pre-addressed to info@biopoly.rs
-       with all form data in the body. Also offer WhatsApp + Viber. */
-    const subject = '3D Scanning Service Request — ' + (d.name || 'Website enquiry');
-    const mailtoLink = 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    const wa = 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(body);
-    const hint = $('#formHint');
-    if (hint) {
-      hint.innerHTML =
-        '<p style="margin:0 0 12px;font-size:13px;color:var(--txt);line-height:1.5">' +
-        (document.documentElement.lang === 'sr'
-          ? 'Kliknite ispod da pošaljete zahtev direktno na <b>info@biopoly.rs</b> — sve podatke iz forme smo već uneli.'
-          : 'Click below to send your request directly to <b>info@biopoly.rs</b> — all your form details are pre-filled.') +
-        '</p>' +
-        '<a class="btn btn-solid" href="' + mailtoLink + '" data-i18n="f.send.email">Send email</a>' +
-        ' <a class="btn btn-ghost" target="_blank" href="' + wa + '" data-i18n="cta.chat">Send via WhatsApp</a>' +
-        ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Send via Viber</a>';
-      hint.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      location.href = mailtoLink;
-    }
+    const data = new FormData(form);
+    data.append('_subject', '3D Scanning Service Request — ' + (data.get('name') || 'Website enquiry'));
+    data.append('_template', 'table');
+
+    fetch('https://formsubmit.co/ajax/' + SITE.email, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(r => r.json())
+      .then(j => {
+        if (j.success === 'true' || j.success) {
+          form.style.display = 'none';
+          const ok = $('#formHint') || document.createElement('div');
+          ok.id = 'formHint';
+          ok.innerHTML =
+            '<div class="panel rv in" style="text-align:center;padding:40px 24px">' +
+            '<div style="font-size:42px;margin-bottom:12px">✓</div>' +
+            '<h3 style="font:600 22px/1.3 var(--fd);margin-bottom:8px">' +
+            (sr ? 'Hvala! Poruka je poslata.' : 'Thank you! Your message has been sent.') + '</h3>' +
+            '<p style="color:var(--mut);font-size:14px;line-height:1.6">' +
+            (sr ? 'Odgovaramo na <b>info@biopoly.rs</b> u toku dana. Proverite i spam folder ako ne vidite odgovor.'
+                : 'We reply to <b>info@biopoly.rs</b> within the same day. Please also check your spam folder if you don\'t see a reply.') +
+            '</p></div>';
+          ok.style.marginTop = '0';
+          form.parentNode.insertBefore(ok, form.nextSibling);
+          ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('not successful');
+        }
+      })
+      .catch(() => {
+        btn.textContent = orig;
+        btn.disabled = false;
+        const hint = $('#formHint');
+        if (hint) {
+          const wa = 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(
+            'Name: ' + (data.get('name') || '-') + '\nEmail: ' + (data.get('email') || '-') +
+            '\nPhone: ' + (data.get('phone') || '-') + '\nType: ' + (data.get('type') || '-') +
+            '\nGoal: ' + (data.get('goal') || '-') + '\nSize: ' + (data.get('size') || '-') +
+            '\n\n' + (data.get('msg') || ''));
+          hint.innerHTML =
+            '<p style="color:var(--acc);font-size:13px;margin-bottom:10px">' +
+            (sr ? 'Greška pri slanju — pokušajte putem WhatsApp-a ili Viber-a:'
+                : 'Submission error — please try via WhatsApp or Viber:') + '</p>' +
+            '<a class="btn btn-ghost" target="_blank" href="' + wa + '">WhatsApp</a>' +
+            ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Viber</a>';
+        }
+      });
   });
 
   /* ----- language ----- */
