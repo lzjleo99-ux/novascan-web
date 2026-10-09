@@ -1,4 +1,4 @@
-/* NOVASCAN hero — Apple-style frame-sequence scrubber
+/* Biopoly Scan hero — Apple-style frame-sequence scrubber
    160 WebP frames drawn to canvas, eased toward scroll target.
    The scrub ALWAYS runs — it moves only when the user scrolls, so it is not
    the kind of autonomous animation prefers-reduced-motion should block.

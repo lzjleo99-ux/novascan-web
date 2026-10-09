@@ -1,9 +1,9 @@
 /* ============================================================
-   NOVASCAN — site config + interactions
+   Biopoly Scan — site config + interactions
    ★ 中文注释：这里是你以后唯一需要改联系方式的地方 ★
    ============================================================ */
 const SITE = {
-  brand: 'NOVASCAN',                  // 品牌名（全站替换）
+  brand: 'Biopoly Scan',               // 品牌名（全站替换）
   tagline: 'REALITY CAPTURE STUDIO',  // 品牌副标
   email: 'info@biopoly.rs',              // 联系邮箱
   phone: '+381 64 8086125',           // 电话（显示格式）
