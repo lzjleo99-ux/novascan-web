@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://lzjleo99-ux.github.io/novascan-web/sitemap.xml
+Sitemap: https://biopoly.rs/sitemap.xml
