@@ -100,17 +100,26 @@ const SITE = {
       'Object type: ' + (d.type || '-') + '\n' +
       'Goal: ' + (d.goal || '-') + '\n' +
       'Size: ' + (d.size || '-') + '\n\n' + (d.msg || '');
+
+    /* Direct email — opens user's email client, pre-addressed to info@biopoly.rs
+       with all form data in the body. Also offer WhatsApp + Viber. */
+    const subject = '3D Scanning Service Request — ' + (d.name || 'Website enquiry');
+    const mailtoLink = 'mailto:' + SITE.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     const wa = 'https://wa.me/' + SITE.whatsapp + '?text=' + encodeURIComponent(body);
     const hint = $('#formHint');
     if (hint) {
       hint.innerHTML =
-        '<a class="btn btn-solid" href="mailto:' + SITE.email + '?subject=' +
-        encodeURIComponent('Scan request — ' + (d.type || 'general')) + '&body=' + encodeURIComponent(body) +
-        '">Open email draft</a> <a class="btn btn-ghost" target="_blank" href="' + wa + '">Send via WhatsApp</a>' +
+        '<p style="margin:0 0 12px;font-size:13px;color:var(--txt);line-height:1.5">' +
+        (document.documentElement.lang === 'sr'
+          ? 'Kliknite ispod da pošaljete zahtev direktno na <b>info@biopoly.rs</b> — sve podatke iz forme smo već uneli.'
+          : 'Click below to send your request directly to <b>info@biopoly.rs</b> — all your form details are pre-filled.') +
+        '</p>' +
+        '<a class="btn btn-solid" href="' + mailtoLink + '" data-i18n="f.send.email">Send email</a>' +
+        ' <a class="btn btn-ghost" target="_blank" href="' + wa + '" data-i18n="cta.chat">Send via WhatsApp</a>' +
         ' <a class="btn btn-ghost" target="_blank" href="' + SITE.viber + '">Send via Viber</a>';
       hint.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
-      location.href = 'mailto:' + SITE.email + '?subject=' + encodeURIComponent('Scan request') + '&body=' + encodeURIComponent(body);
+      location.href = mailtoLink;
     }
   });
 
